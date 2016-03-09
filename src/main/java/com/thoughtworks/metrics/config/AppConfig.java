@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 @Configuration
 @PropertySources({
         @PropertySource(value = "classpath:application.properties"),
-        @PropertySource(value = "file:/etc/spring-mongo/application.properties", ignoreResourceNotFound=true)
+        @PropertySource(value = "file:/etc/metrics-spring/application.properties", ignoreResourceNotFound=true)
 })
 public class AppConfig {
     @Autowired
