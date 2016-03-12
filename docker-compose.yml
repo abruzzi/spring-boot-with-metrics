@@ -9,3 +9,10 @@ app:
     - 8125:8125 
     - 8126:8126
     - 8080:15672
+
+ui:
+  image: registry.aliyuncs.com/gdk/grafana
+  ports:
+    - 3000:3000
+  volumes:
+    - ./grafana:/var/lib/grafana

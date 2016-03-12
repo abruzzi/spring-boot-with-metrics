@@ -1,11 +1,9 @@
 package com.thoughtworks.metrics.config;
 
-import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.MetricFilter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.graphite.Graphite;
 import com.codahale.metrics.graphite.GraphiteReporter;
-import com.codahale.metrics.jvm.GarbageCollectorMetricSet;
 import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
 import com.codahale.metrics.jvm.ThreadStatesGaugeSet;
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
@@ -29,17 +27,17 @@ public class MetricsConfig extends MetricsConfigurerAdapter {
                 .filter(MetricFilter.ALL)
                 .build(graphite);
 
-        ConsoleReporter consoleReporter = ConsoleReporter.forRegistry(metricRegistry).build();
+//        ConsoleReporter consoleReporter = ConsoleReporter.forRegistry(metricRegistry).build();
+//        registerReporter(consoleReporter);
+//        consoleReporter.start(1, TimeUnit.MINUTES);
 
-//        registerReporter(graphiteReporter);
-//        graphiteReporter.start(1, TimeUnit.MINUTES);
+        registerReporter(graphiteReporter);
+        graphiteReporter.start(1, TimeUnit.MINUTES);
 
-        metricRegistry.registerAll(new GarbageCollectorMetricSet());
+
         metricRegistry.registerAll(new MemoryUsageGaugeSet());
         metricRegistry.registerAll(new ThreadStatesGaugeSet());
 
-        registerReporter(consoleReporter);
-        consoleReporter.start(1, TimeUnit.MINUTES);
 
     }
 

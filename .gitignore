@@ -2,3 +2,4 @@ build/
 .gradle/
 metrics-spring-demo.*
 out/
+grafana/
