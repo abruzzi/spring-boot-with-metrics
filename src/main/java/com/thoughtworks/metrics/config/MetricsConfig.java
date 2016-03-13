@@ -27,18 +27,12 @@ public class MetricsConfig extends MetricsConfigurerAdapter {
                 .filter(MetricFilter.ALL)
                 .build(graphite);
 
-//        ConsoleReporter consoleReporter = ConsoleReporter.forRegistry(metricRegistry).build();
-//        registerReporter(consoleReporter);
-//        consoleReporter.start(1, TimeUnit.MINUTES);
-
         registerReporter(graphiteReporter);
         graphiteReporter.start(1, TimeUnit.MINUTES);
 
 
         metricRegistry.registerAll(new MemoryUsageGaugeSet());
         metricRegistry.registerAll(new ThreadStatesGaugeSet());
-
-
     }
 
 }

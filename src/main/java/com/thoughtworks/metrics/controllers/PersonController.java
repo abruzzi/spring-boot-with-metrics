@@ -1,5 +1,6 @@
 package com.thoughtworks.metrics.controllers;
 
+import com.codahale.metrics.annotation.Metered;
 import com.codahale.metrics.annotation.Timed;
 import com.thoughtworks.metrics.models.Person;
 import com.thoughtworks.metrics.repos.PersonRepository;
@@ -15,6 +16,7 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
+    @Metered(absolute = true, name = "metered.people.get.all")
     @Timed(absolute = true, name = "people.get.all")
     @RequestMapping(value ="/people", method = RequestMethod.GET)
     public List<Person> findAll() {
